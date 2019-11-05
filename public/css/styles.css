@@ -1,0 +1,144 @@
+/* Selectors */
+body {
+  text-align: center;
+
+}
+
+nav {
+  height: 80px;
+}
+
+p {
+  width: 40%;
+  line-height: 2;
+  margin:auto;
+}
+
+
+/* NAVBAR */
+
+.logo-two {
+  position: absolute;
+  margin-top: 19px;
+}
+
+.logo-remember {
+  margin-left: 3px;
+}
+.logo-remember:hover {
+  opacity: 0;
+}
+
+.logo-oboete {
+  margin-left: 65px;
+  margin-top: 10px;
+}
+
+.settings-icon {
+  padding-bottom: 3px;
+  opacity: 0.7;
+}
+
+.settings-icon:hover {
+  opacity: 1;
+}
+
+/* Home Page */
+
+/* Heading */
+.heading {
+  margin: 100px auto 220px;
+}
+
+.big-heading {
+  margin-bottom: 30px;
+}
+
+.small-heading {
+  margin-bottom: 50px;
+}
+
+/* Explain the Kanji */
+
+.explain-kanji {
+  padding-bottom: 100px;
+}
+
+.logo {
+  margin: 40px auto;
+}
+
+
+.weirdo {
+  position: absolute;
+}
+
+.remember {
+  position: relative;
+  bottom: 20px
+
+}
+
+.remember:hover {
+  opacity: 0.1;
+}
+
+.kanji {
+  height: 300px;
+  position: relative;
+  top: 30px;
+
+}
+
+.kanji-span {
+  background-color: #DE8957;
+  color: white;
+  border-radius: 3px;
+
+
+}
+
+.larger-radical-span {
+  background-color: #324E5C;
+  color: white;
+  border-radius: 3px;
+
+}
+
+.radical-span {
+  background-color: #1BA6D2;
+  color: white;
+  border-radius: 3px;
+
+}
+/* Radical Carousel */
+.carousel {
+  padding-bottom: 150px;
+}
+
+
+.radical-heading {
+  margin-bottom: 50px;
+}
+
+.radical-v {
+  margin-bottom: 50px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}
+
+/* Media queries */
+@media (max-width: 1028px) {
+  nav {
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-button {
+    visibility: hidden;
+  }
+}

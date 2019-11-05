@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Oboete</title>
+  <!-- add the favicon -->
+  <link rel='shortcut icon' href='images/favicon.png' type='image/png' />
+  <!-- add bootstrap  -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- add stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- NAVBAR-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <a class="navbar-brand" href="#">
+      <img src="images/weirdo.png" width="50" height="55" alt="" class="logo-two weirdo">
+      <img src="images/kanji_remember.png" width="45" alt="" class="logo-two logo-remember">
+      <img src="images/logo.png" width="130" alt="" class="logo-oboete">
+    </a>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="...">
+      <button class="btn btn-outline-dark my-2 my-sm-0 search-button" type="submit">Search</button>
+    </form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Flashcards</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img src="images/settings.png" alt="settings-icon" class="settings-icon">
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  <!-- About/Home -->
+  <!-- Heading -->
+  <div class="heading">
+    <img class="logo" src="images/logo-heading.png" alt="logo-png" width="400">
+    <h1 class="big-heading">A powerful dictionary for learning Kanji</h1>
+    <h2 class="small-heading">You'll learn any Kanji by heart in no time!</h2>
+  </div>
+  <!-- Tutorial -->
+  <!-- Explaining the Kanji -->
+  <div class="explain-kanji">
+    <div class="kanji-heading">
+      <h1>Kanji</h1>
+    </div>
+    <div class="kanji">
+      <img src="images/weirdo.png" alt="" class="weirdo" width="200">
+      <img src="images/kanji_remember.png" alt="" class="remember" width="200">
+    </div>
+    <p>This Kanji meaning <span class="kanji-span shadow">memorize</span> is made up of the Radicals <span class="radical-span shadow">viking</span> and <span class="radical-span shadow">see</span>. Imagine a <span class="radical-span shadow">viking</span> having to naviagte his ship through oceans.
+      Being granted his ability to <span class="radical-span shadow">see</span> he is able to recognize areas he once <span class="kanji-span shadow">memorize</span>d.
+    </p>
+  </div>
+  <!-- Radical Carousel -->
+  <h1 class="radical-heading">Radicals</h1>
+  <div id="carouselExampleControls" class="carousel slide carousel" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/radical-v.png" alt="" class="radical-v">
+        <p>There is a <span class="radical-span shadow">roof</span> with extra <span class="radical-span shadow">spikes/horns</span> on it. Who was famous for having spiked roofs, spiked helmets, spiked boats?! The <span class="larger-radical-span shadow">vikings</span>! That's why this is the <span class="larger-radical-span shadow">viking</span> radical.</p>
+      </div>
+      <div class="carousel-item">
+        <img src="images/radical-s.png" alt="">
+        <p>This radical means to <span class="larger-radical-span shadow">see</span>. There's an <span class="radical-span shadow">eye</span>ball on top of some <span class="radical-span shadow">legs</span>. When your <span class="radical-span shadow">eyes</span> get taken places (on <span class="radical-span shadow">legs</span>, in this case),
+          your <span class="radical-span shadow">eyes</span> are seeing those things. Think about the Lord of Rings.
+          The <span class="radical-span shadow">Eye</span> of Mordor pretty much stands on something like <span class="radical-span shadow">legs</span> and <span class="larger-radical-span shadow">sees</span> everything, well almost everything.
+        </p>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- Community Benefits -->
+  <div class="community">
+    <h1>Join a Community</h1>
+    <h3>You didn't like these menemonic stories?</h3>
+    <h3>Make up your own and share them with the community</h3>
+  </div>
+
+  <!-- Add JS and jquery to for bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <!-- Adding own javascript -->
+  <script src="index.js" charset="utf-8"></script>
+</body>
+
+</html>
