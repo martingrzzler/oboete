@@ -141,4 +141,9 @@ p {
   .search-button {
     visibility: hidden;
   }
+
+  .toggler-button {
+    position: relative;
+    bottom: 112px;
+  }
 }
