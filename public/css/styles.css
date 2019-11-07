@@ -1,6 +1,7 @@
 /* Selectors */
 body {
   text-align: center;
+  background-image: url("/images/asanoha.png");
 
 }
 
@@ -135,6 +136,7 @@ p {
   nav {
     height: auto;
   }
+
 }
 
 @media (max-width: 600px) {
@@ -145,5 +147,11 @@ p {
   .toggler-button {
     position: relative;
     bottom: 112px;
+  }
+}
+
+@media (min-width: 1030px) {
+  .search-bar {
+    width: 450px !important;
   }
 }
