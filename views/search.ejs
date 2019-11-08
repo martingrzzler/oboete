@@ -1,8 +1,32 @@
 <%- include("header") %>
-<h1> <%= word %> </h1>
-<h1> <%= reading %> </h1>
-<h1> <%= translation %> </h1>
-<h3> <%= examples %> </h3>
+
+
+  <div class="general-info">
+    <h1 class="word-heading"> <%= word %> </h1>
+    <h5>Reading: <%= reading %> </h5>
+    <h5>Translation: </h5>
+    <p class="translation-p"><%= translation %> </p>
+    <div class="used-kanji">
+      <h5>Used Kanji:</h5>
+    </div>
+  </div>
+  <div class="examples">
+    <h5>Examples: </h5>
+    <p>
+      <%= examples.kanji[0] %> <br>
+      <%= examples.kana[0] %> <br>
+      <%= examples.english[0] %> <br>
+      <%= examples.kanji[1] %> <br>
+      <%= examples.kana[1] %> <br>
+      <%= examples.english[1] %> <br>
+      <%= examples.kanji[2] %> <br>
+      <%= examples.kana[2] %> <br>
+      <%= examples.english[2] %> <br>
+    </p>
+  </div>
+
+
+
 
 
 

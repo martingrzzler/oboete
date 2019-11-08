@@ -39,13 +39,17 @@ app.post('/', function(req, res) {
 
     jisho.searchForExamples(word).then(result => {
 
-      examples = [];
+      examples = {
+        kanji: [],
+        kana: [],
+        english: []
+      };
 
       for (let i = 0; i < 3; ++i) {
         let example = result.results[i];
-        examples.push(example.kanji);
-        examples.push(example.kana);
-        examples.push(example.english);
+        examples.kanji.push(example.kanji);
+        examples.kana.push(example.kana);
+        examples.english.push(example.english);
 
       }
 
@@ -63,3 +67,5 @@ app.post('/', function(req, res) {
 
 
 });
+
+// redirect to Kanji Route

@@ -2,6 +2,7 @@
 body {
   text-align: center;
   background-image: url("/images/asanoha.png");
+  font-family: 'Kosugi Maru', sans-serif;
 
 }
 
@@ -9,14 +10,10 @@ nav {
   height: 80px;
 }
 
-p {
-  width: 40%;
-  line-height: 2;
-  margin:auto;
-}
 
 
 /* NAVBAR */
+
 
 .logo-two {
   position: absolute;
@@ -112,6 +109,13 @@ p {
   border-radius: 3px;
 
 }
+
+.landingpage-p {
+  width: 40%;
+  line-height: 2;
+  margin:auto;
+}
+
 /* Radical Carousel */
 .carousel {
   padding-bottom: 150px;
@@ -131,6 +135,37 @@ p {
     filter: invert(100%);
 }
 
+/* Search Route for Word */
+.general-info {
+  text-align: left;
+  margin-top: 30px;
+  padding: 80px 150px 30px;
+}
+
+.word-heading {
+  font-size: 80px;
+  margin-bottom: 40px;
+}
+
+.translation-p {
+  width: 300px;
+}
+
+.examples {
+  text-align: left;
+  padding-left: 150px;
+
+}
+
+.used-kanji {
+
+}
+
+.kanji-button {
+  background-color: #DE8957;
+  font-size: 60px;
+  margin: auto 10px;
+}
 /* Media queries */
 @media (max-width: 1028px) {
   nav {
