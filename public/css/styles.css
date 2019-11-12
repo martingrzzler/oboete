@@ -164,6 +164,12 @@ nav {
   font-size: 60px;
   margin: auto 10px;
 }
+
+/* Kanji Route */
+.kanji-header {
+  margin-top: 200px;
+}
+
 /* Media queries */
 @media (max-width: 1028px) {
   nav {
