@@ -2,15 +2,13 @@
 body {
   text-align: center;
   background-image: url("/images/asanoha.png");
-  font-family: 'Kosugi Maru', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
 
 }
 
 nav {
   height: 80px;
 }
-
-
 
 /* NAVBAR */
 

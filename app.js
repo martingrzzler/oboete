@@ -24,9 +24,13 @@ app.listen(3000, function() {
   console.log("Server started on port 3000");
 });
 
+// variables
+let query;
+
 //search word
-app.post('/', function(req, res) {
-  let query = req.body.query;
+
+app.post('/search', function(req, res) {
+  query = req.body.query;
   let word, reading, translation, examples;
 
   jisho.searchForPhrase(query).then(result => {
@@ -69,3 +73,6 @@ app.post('/', function(req, res) {
 });
 
 // redirect to Kanji Route
+app.get("/kanji", function(req, res) {
+
+});

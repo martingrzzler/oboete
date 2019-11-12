@@ -4,7 +4,7 @@ for (let i = 0; i < wordArray.length; i++) {
   $("<button/>", {
     text: wordArray[i],
     id: "kanji" + i,
-    class: "btn kanji-button"
+    class: "btn btn-outline-dark kanji-button"
 
   }).appendTo(".used-kanji");
 }
