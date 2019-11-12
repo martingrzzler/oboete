@@ -8,6 +8,9 @@
     <p class="translation-p"><%= translation %> </p>
     <div class="used-kanji">
       <h5>Used Kanji:</h5>
+      <% kanjiArray.forEach(function(kanji) { %>
+        <a href="<%= "/kanji/" + kanji %>" class="btn btn-outline-dark kanji-button" type="button" name="button"> <%= kanji %></a>
+      <% }) %>
     </div>
   </div>
   <div class="examples">
