@@ -1,4 +1,21 @@
 <%- include("header"); -%>
-<h1 class="kanji-header"> <%= kanji %> </h1>
+
+<div class="kanji-info">
+  <h1 class="kanji-heading"> <%= kanji %> </h1>
+  <h5> <%="Meaning: " + kanjiInfo.meaning %> </h5>
+  <h5> <%= "On Reading: " + kanjiInfo.onyomi %> </h5>
+  <h5> <%= "Kun Reading: " + kanjiInfo.kunyomi %> </h5>
+  <h5> <%= "jlpt Level: " + kanjiInfo.jlptLevel %> </h5>
+  <h5>Radicals:</h5>
+  <% if (kanjiInfo.radical !== "") { %>
+    <a href="<%= "/radical/" + kanjiInfo.radical %>" class="btn btn-outline-dark radical-button"> <%= kanjiInfo.radical %></a>
+  <% } %>
+
+  <% kanjiInfo.parts.forEach(function (part) { %>
+    <a href="<%= "/radical/" + part %>" class="btn btn-outline-dark radical-button"> <%= part %></a>
+  <% }); %>
+
+</div>
+
 
 <%- include("footer"); -%>

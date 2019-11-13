@@ -155,9 +155,6 @@ nav {
 
 }
 
-.used-kanji {
-
-}
 
 .kanji-button {
   background-color: #DE8957;
@@ -166,8 +163,20 @@ nav {
 }
 
 /* Kanji Route */
-.kanji-header {
-  margin-top: 200px;
+.kanji-heading {
+  font-size: 80px;
+
+}
+
+.kanji-info {
+  text-align: left;
+  margin-top: 150px;
+  padding-left: 150px;
+}
+
+.radical-button {
+  background-color: #1BA6D2;
+  font-size: 40px;
 }
 
 /* Media queries */

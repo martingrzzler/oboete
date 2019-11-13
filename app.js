@@ -54,7 +54,7 @@ app.post('/search', function(req, res) {
         examples.english.push(example.english);
 
       }
-      res.redirect("/search");
+      res.redirect("/search/:" + word);
     });
 
 
@@ -63,8 +63,7 @@ app.post('/search', function(req, res) {
 
 });
 
-app.get("/search", function(req, res) {
-
+app.get("/search/:" + word, function(req, res) {
   let kanjiArray = parseKanji(word);
 
   function isKanji(ch) {
@@ -102,16 +101,33 @@ app.get("/search", function(req, res) {
 // redirect to Kanji Route
 app.get("/kanji/:kanji", function(req, res) {
   let kanjiQuery = req.params.kanji;
+
   jisho.searchForKanji(kanjiQuery).then(result => {
-    console.log('Meaning: ' + result.meaning);
-    console.log('Kunyomi: ' + JSON.stringify(result.kunyomi));
-    console.log('Onyomi: ' + JSON.stringify(result.onyomi));
-    console.log('JLPT level: ' + result.jlptLevel);
+    let kanjiInfo = {
+      meaning: result.meaning,
+      onyomi: result.onyomi,
+      kunyomi: result.kunyomi,
+      jlptLevel: result.jlptLevel,
+      parts: result.parts,
+      radical: result.radical.symbol
+    };
+    kanjiInfo.parts.forEach(function(part) {
+      if (part === kanjiInfo.radical) {
+        kanjiInfo.radical = "";
+      }
+    });
 
-    res.render("kanji", {kanji: kanjiQuery});
+    res.render("kanji", {
+      kanji: kanjiQuery,
+      kanjiInfo: kanjiInfo
+    });
   });
+});
 
-
+// get radical route
+app.get("/radical/:radical", function(req, res) {
+  let radicalQuery = req.params.radical;
+  res.render("radical", {radical: radicalQuery});
 });
 // set up port
 app.listen(3000, function() {
