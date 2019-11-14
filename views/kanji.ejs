@@ -1,21 +1,61 @@
 <%- include("header"); -%>
+<div class="container">
+  <div class="row">
+    <div class="col block">
+      <h1 class="kanji-heading"> <span class="badge shadow"><%= kanji %></span></h1>
+      <h5> <%="Meaning: " + kanjiInfo.meaning %> </h5>
+      <h5> <%= "On Reading: " + kanjiInfo.onyomi %> </h5>
+      <h5> <%= "Kun Reading: " + kanjiInfo.kunyomi %> </h5>
+      <h5> <%= "jlpt Level: " + kanjiInfo.jlptLevel %> </h5>
+      <h5>Radicals:</h5>
+      <% if (kanjiInfo.radical !== "" && kanjiInfo.radical !== kanji) { %>
+      <a href="<%= "/radical/" + kanjiInfo.radical %>" class="btn btn-outline-dark radical-button"> <%= kanjiInfo.radical %></a>
+      <% } %>
+      <% kanjiInfo.parts.forEach(function (part) { %>
+      <% if (part !== kanji) { %>
+      <a href="<%= "/radical/" + part %>" class="btn btn-outline-dark radical-button"> <%= part %></a>
+      <% } %>
+      <% }); %>
 
-<div class="kanji-info">
-  <h1 class="kanji-heading"> <%= kanji %> </h1>
-  <h5> <%="Meaning: " + kanjiInfo.meaning %> </h5>
-  <h5> <%= "On Reading: " + kanjiInfo.onyomi %> </h5>
-  <h5> <%= "Kun Reading: " + kanjiInfo.kunyomi %> </h5>
-  <h5> <%= "jlpt Level: " + kanjiInfo.jlptLevel %> </h5>
-  <h5>Radicals:</h5>
-  <% if (kanjiInfo.radical !== "") { %>
-    <a href="<%= "/radical/" + kanjiInfo.radical %>" class="btn btn-outline-dark radical-button"> <%= kanjiInfo.radical %></a>
-  <% } %>
-
-  <% kanjiInfo.parts.forEach(function (part) { %>
-    <a href="<%= "/radical/" + part %>" class="btn btn-outline-dark radical-button"> <%= part %></a>
-  <% }); %>
-
+    </div>
+    <div class="col block">
+      <h5>Meaning Mnemonics:</h5>
+      <div class="dropdown">
+        <button class="btn btn-sm btn-dark dropdown-toggle" type="button" id="add-story-meaning" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Add+
+        </button>
+        <div class="dropdown-menu" aria-labelledby="add-story-meaning">
+          <div class="" id="add-meaning-mnemonic-container">
+            <form class="" action="<%= "/kanji/" + kanji %>" method="post">
+              <div class="form-group">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <button class="btn btn-sm btn-dark share-story-btn" type="submit" name="button">Share</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <h5>Reading Mnemonics:</h5>
+      <div class="dropdown">
+        <button class="btn btn-sm btn-dark dropdown-toggle" type="button" id="add-story-reading" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Add+
+        </button>
+        <div class="dropdown-menu" aria-labelledby="add-story-reading">
+          <div class="" id="add-reading-mnemonic-container">
+            <form class="" action="<%= "/kanji/" + kanji %>" method="post">
+              <div class="form-group">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <button class="btn btn-dark btn-sm share-story-btn" type="submit" name="button">Share</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 
 <%- include("footer"); -%>

@@ -165,19 +165,37 @@ nav {
 /* Kanji Route */
 .kanji-heading {
   font-size: 80px;
-
 }
 
-.kanji-info {
+.badge {
+  background-color: #DE8957;
+  font-weight: normal;
+}
+
+.radical-heading-span {
+  background-color: #1BA6D2;
+}
+
+.block {
   text-align: left;
   margin-top: 150px;
-  padding-left: 150px;
 }
 
 .radical-button {
   background-color: #1BA6D2;
   font-size: 40px;
 }
+
+.dropdown-menu {
+  width: 600px;
+  padding: 0;
+}
+
+.share-story-btn {
+  margin: auto auto 8px 8px;
+}
+
+
 
 /* Media queries */
 @media (max-width: 1028px) {

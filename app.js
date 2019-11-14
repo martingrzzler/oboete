@@ -102,6 +102,9 @@ app.get("/search/:" + word, function(req, res) {
 app.get("/kanji/:kanji", function(req, res) {
   let kanjiQuery = req.params.kanji;
 
+
+
+
   jisho.searchForKanji(kanjiQuery).then(result => {
     let kanjiInfo = {
       meaning: result.meaning,
@@ -127,7 +130,28 @@ app.get("/kanji/:kanji", function(req, res) {
 // get radical route
 app.get("/radical/:radical", function(req, res) {
   let radicalQuery = req.params.radical;
-  res.render("radical", {radical: radicalQuery});
+
+  jisho.searchForKanji(radicalQuery).then(result => {
+    let kanjiInfo = {
+      meaning: result.meaning,
+      onyomi: result.onyomi,
+      kunyomi: result.kunyomi,
+      jlptLevel: result.jlptLevel,
+      parts: result.parts,
+      radical: result.radical.symbol
+    };
+    kanjiInfo.parts.forEach(function(part) {
+      if (part === kanjiInfo.radical) {
+        kanjiInfo.radical = "";
+      }
+    });
+
+    res.render("radical", {
+      radical: radicalQuery,
+      kanjiInfo: kanjiInfo
+    });
+  });
+
 });
 // set up port
 app.listen(3000, function() {
