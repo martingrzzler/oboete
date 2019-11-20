@@ -59,7 +59,7 @@ app.post('/search', function(req, res) {
           examples.english.push(example.english);
 
         }
-        res.redirect("/search/:" + word);
+        res.redirect("/search/" + word);
       });
 
 
@@ -70,7 +70,7 @@ app.post('/search', function(req, res) {
 
 });
 
-app.get("/search/:" + word, function(req, res) {
+app.get("/search/:word", function(req, res) {
   let kanjiArray = parseKanji(word);
 
   function isKanji(ch) {
