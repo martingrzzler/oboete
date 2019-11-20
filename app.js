@@ -32,31 +32,38 @@ app.post('/search', function(req, res) {
   query = req.body.query;
 
   jisho.searchForPhrase(query).then(result => {
-    word = result.data[0].japanese[0].word;
-    reading = result.data[0].japanese[0].reading;
-    translation = [];
-    for (let i = 0; i < result.data[0].senses.length; i++) {
-      translation.push(result.data[0].senses[i].english_definitions);
-    }
 
-    jisho.searchForExamples(word).then(result => {
-
-      examples = {
-        kanji: [],
-        kana: [],
-        english: []
-      };
-
-      for (let i = 0; i < 3; ++i) {
-        let example = result.results[i];
-        examples.kanji.push(example.kanji);
-        examples.kana.push(example.kana);
-        examples.english.push(example.english);
-
+    if (result.data.length === 0) {
+      res.render("queryError", {});
+    } else {
+      word = result.data[0].japanese[0].word;
+      reading = result.data[0].japanese[0].reading;
+      translation = [];
+      for (let i = 0; i < result.data[0].senses.length; i++) {
+        translation.push(result.data[0].senses[i].english_definitions);
       }
-      res.redirect("/search/:" + word);
-    });
 
+
+      jisho.searchForExamples(word).then(result => {
+
+        examples = {
+          kanji: [],
+          kana: [],
+          english: []
+        };
+
+        for (let i = 0; i < 3; ++i) {
+          let example = result.results[i];
+          examples.kanji.push(example.kanji);
+          examples.kana.push(example.kana);
+          examples.english.push(example.english);
+
+        }
+        res.redirect("/search/:" + word);
+      });
+
+
+    }
 
   });
 
@@ -99,8 +106,10 @@ app.get("/search/:" + word, function(req, res) {
 
 
 // redirect to Kanji Route
+let kanjiQuery;
+
 app.get("/kanji/:kanji", function(req, res) {
-  let kanjiQuery = req.params.kanji;
+  kanjiQuery = req.params.kanji;
 
 
 
@@ -122,9 +131,24 @@ app.get("/kanji/:kanji", function(req, res) {
 
     res.render("kanji", {
       kanji: kanjiQuery,
-      kanjiInfo: kanjiInfo
+      kanjiInfo: kanjiInfo,
+      meaningMnemonics: meaningMnemonics
     });
   });
+});
+
+// post mnemonics to kanji
+let readingMnemonics = [];
+let meaningMnemonics = [];
+
+app.post("/kanji/:kanji", function(req, res) {
+
+  let meaningPost = req.body.meaningPost;
+  let readingPost = req.body.readingPost;
+  meaningMnemonics.push(meaningPost);
+  readingMnemonics.push(readingPost);
+  res.redirect("/kanji/:kanji");
+
 });
 
 // get radical route

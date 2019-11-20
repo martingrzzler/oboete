@@ -38,7 +38,10 @@ nav {
 .settings-icon:hover {
   opacity: 1;
 }
-
+/* Query Error Page */
+.sorryMessage {
+  margin-top: 80px;
+}
 /* Home Page */
 
 /* Heading */

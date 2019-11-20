@@ -28,13 +28,17 @@
           <div class="" id="add-meaning-mnemonic-container">
             <form class="" action="<%= "/kanji/" + kanji %>" method="post">
               <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="meaningPost"></textarea>
               </div>
-              <button class="btn btn-sm btn-dark share-story-btn" type="submit" name="button">Share</button>
+              <button class="btn btn-sm btn-dark share-story-btn" type="submit" name="meaningButton">Share</button>
             </form>
           </div>
         </div>
       </div>
+      <% meaningMnemonics.forEach(function(i) { %>
+        <p> <%= i %> </p>
+      <% }); %>
+
       <hr>
       <h5>Reading Mnemonics:</h5>
       <div class="dropdown">
@@ -45,9 +49,9 @@
           <div class="" id="add-reading-mnemonic-container">
             <form class="" action="<%= "/kanji/" + kanji %>" method="post">
               <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="readingPost"></textarea>
               </div>
-              <button class="btn btn-dark btn-sm share-story-btn" type="submit" name="button">Share</button>
+              <button class="btn btn-dark btn-sm share-story-btn" type="submit" name="readingButton">Share</button>
             </form>
           </div>
         </div>
