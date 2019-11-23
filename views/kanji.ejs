@@ -8,15 +8,20 @@
       <h5> <%= "Kun Reading: " + kanjiInfo.kunyomi %> </h5>
       <h5> <%= "jlpt Level: " + kanjiInfo.jlptLevel %> </h5>
       <h5>Radicals:</h5>
-      <% if (kanjiInfo.radical !== "" && kanjiInfo.radical !== kanji) { %>
-      <a href="<%= "/radical/" + kanjiInfo.radical %>" class="btn btn-outline-dark radical-button"> <%= kanjiInfo.radical %></a>
-      <% } %>
-      <% kanjiInfo.parts.forEach(function (part) { %>
-      <% if (part !== kanji) { %>
-      <a href="<%= "/radical/" + part %>" class="btn btn-outline-dark radical-button"> <%= part %></a>
-      <% } %>
-      <% }); %>
-
+      <div class="radical-btns">
+        <% if (kanjiInfo.radical !== "" && kanjiInfo.radical !== kanji) { %>
+        <a href="<%= "/radical/" + kanjiInfo.radical %>" class="btn btn-outline-dark radical-button"> <%= kanjiInfo.radical %></a>
+        <% } %>
+        <% kanjiInfo.parts.forEach(function (part) { %>
+        <% if (part !== kanji) { %>
+        <a href="<%= "/radical/" + part %>" class="btn btn-outline-dark radical-button"> <%= part %></a>
+        <% } %>
+        <% }); %>
+      </div>
+      <br>
+      <a href=" <%="https://www.wanikani.com/kanji/" + kanji  %>">This Kanji on WaniKani</a>
+      <br>
+      <a href="<%= "https://jisho.org/search/"+ kanji + "20%23kanji" %>">This Kanji on Jisho</a>
     </div>
     <div class="col block">
       <h5>Meaning Mnemonics:</h5>
@@ -26,18 +31,20 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="add-story-meaning">
           <div class="" id="add-meaning-mnemonic-container">
-            <form class="" action="<%= "/kanji/" + kanji %>" method="post">
+            <form class="" action="<%= "/kanji/" + kanji + "/meaning" %>" method="post">
               <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="meaningPost"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="meaningPost" placeholder="Mark Kanji with @ and Radicals with # in front of the word. You can also use radicals from Wanikani. Just be creative;)"></textarea>
               </div>
               <button class="btn btn-sm btn-dark share-story-btn" type="submit" name="meaningButton">Share</button>
             </form>
           </div>
         </div>
       </div>
-      <% meaningMnemonics.forEach(function(i) { %>
-        <p> <%= i %> </p>
-      <% }); %>
+      <div class="mnemonics">
+        <% meaningMnemonics.forEach(function(meaning) { %>
+          <p class="mnemonic"> <%= meaning  %> </p>
+        <% }) %>
+      </div>
 
       <hr>
       <h5>Reading Mnemonics:</h5>
@@ -47,14 +54,19 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="add-story-reading">
           <div class="" id="add-reading-mnemonic-container">
-            <form class="" action="<%= "/kanji/" + kanji %>" method="post">
+            <form class="" action="<%= "/kanji/" + kanji + "/reading"%>" method="post">
               <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="readingPost"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="readingPost" placeholder="Mark Kanji with @ and the 'reading-word' with # in front of the word. Just be creative:)"></textarea>
               </div>
               <button class="btn btn-dark btn-sm share-story-btn" type="submit" name="readingButton">Share</button>
             </form>
           </div>
         </div>
+      </div>
+      <div class="mnemonics">
+        <% readingMnemonics.forEach(function(reading) { %>
+          <p class="mnemonic"> <%= reading  %> </p>
+        <% }) %>
       </div>
     </div>
   </div>

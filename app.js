@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const jishoApi = require('unofficial-jisho-api');
 const jisho = new jishoApi();
+const mongoose = require("mongoose");
 
 //use npm modules
 const app = express();
@@ -14,6 +15,18 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
+
+// setting up the Databank
+
+mongoose.connect("mongodb://localhost:27017/oboeteDB", {useNewUrlParser: true, useUnifiedTopology: true});
+
+const mnemonicSchema = {
+  kanji: String,
+  content: String
+};
+
+const Meaning = mongoose.model("Meaning", mnemonicSchema);
+const Reading = mongoose.model("Reading", mnemonicSchema);
 
 //start server
 app.get("/", function(req, res) {
@@ -107,15 +120,16 @@ app.get("/search/:word", function(req, res) {
 
 // redirect to Kanji Route
 let kanjiQuery;
+let meaningMnemonics = [];
+let readingMnemonics = [];
+let kanjiInfo;
 
 app.get("/kanji/:kanji", function(req, res) {
+
   kanjiQuery = req.params.kanji;
 
-
-
-
   jisho.searchForKanji(kanjiQuery).then(result => {
-    let kanjiInfo = {
+    kanjiInfo = {
       meaning: result.meaning,
       onyomi: result.onyomi,
       kunyomi: result.kunyomi,
@@ -129,27 +143,73 @@ app.get("/kanji/:kanji", function(req, res) {
       }
     });
 
-    res.render("kanji", {
-      kanji: kanjiQuery,
-      kanjiInfo: kanjiInfo,
-      meaningMnemonics: meaningMnemonics
+    Meaning.find({kanji: kanjiQuery}, function(err, result) {
+      if(!err) {
+        meaningMnemonics.length = 0;
+        result.forEach(function(meaning) {
+          meaningMnemonics.push(meaning.content);
+        });
+        Reading.find({kanji: kanjiQuery}, function(err, result) {
+          if(!err) {
+            readingMnemonics.length = 0;
+            result.forEach(function(reading) {
+              readingMnemonics.push(reading.content);
+            });
+            res.render("kanji", {
+              kanji: kanjiQuery,
+              kanjiInfo: kanjiInfo,
+              meaningMnemonics: meaningMnemonics,
+              readingMnemonics: readingMnemonics
+            });
+          } else {
+            console.log(err);
+          }
+        });
+      } else {
+        console.log(err);
+      }
     });
+
   });
 });
 
-// post mnemonics to kanji
-let readingMnemonics = [];
-let meaningMnemonics = [];
+// save mnemonis to db
 
-app.post("/kanji/:kanji", function(req, res) {
+app.post("/kanji/:kanji/meaning", function(req, res) {
+  const kanji = req.params.kanji;
+  const meaningPost = req.body.meaningPost;
 
-  let meaningPost = req.body.meaningPost;
-  let readingPost = req.body.readingPost;
-  meaningMnemonics.push(meaningPost);
-  readingMnemonics.push(readingPost);
-  res.redirect("/kanji/:kanji");
-
+  const newMeaning = Meaning({
+    kanji: kanji,
+    content: meaningPost
+  });
+  newMeaning.save(function(err) {
+    if(!err) {
+      res.redirect("/kanji/" + kanji);
+    } else {
+      console.log(err);
+    }
+  });
 });
+
+app.post("/kanji/:kanji/reading", function(req, res) {
+  const kanji = req.params.kanji;
+  const readingPost = req.body.readingPost;
+
+  const newReading = Reading({
+    kanji: kanji,
+    content: readingPost
+  });
+
+  newReading.save(function(err) {
+    if(!err) {
+      res.redirect("/kanji/" + kanji);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
 
 // get radical route
 app.get("/radical/:radical", function(req, res) {
